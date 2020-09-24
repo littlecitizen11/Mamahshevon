@@ -25,19 +25,21 @@ function App() {
         setState(state.slice(0, -1))
     }
 
+
     function onClick(button)
     {
 
-        if(button === "="){
-            calculate()
+        const buttonsToFunction = {
+            "=": calculate,
+            "C": reset,
+            "CE": backspace
         }
 
+        if(button in buttonsToFunction)
+        {
+            const functionToExec = buttonsToFunction[button];
+            functionToExec();
 
-        else if(button === "C"){
-            reset()
-        }
-        else if(button === "CE"){
-            backspace()
         }
 
         else {
